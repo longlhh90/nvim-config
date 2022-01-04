@@ -40,15 +40,19 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- My plugins here
+  -- Common plugins
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "kyazdani42/nvim-web-devicons"
+  use "kyazdani42/nvim-tree.lua"
+  use 'norcalli/nvim-colorizer.lua'
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
   use "rebelot/kanagawa.nvim"
+  use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -66,6 +70,11 @@ return packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" --simple to use language server installer
+  use "ray-x/lsp_signature.nvim"
+  use {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  }
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -77,7 +86,31 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
 
+  -- Toggle Terminal
   use {"akinsho/toggleterm.nvim"}
+
+  -- Lualine
+  use "nvim-lualine/lualine.nvim"
+
+  -- Gitsigns
+  use "lewis6991/gitsigns.nvim"
+
+  -- Auto comment
+  use "numToStr/Comment.nvim"
+
+  -- Autopairs
+  use "windwp/nvim-autopairs"
+
+  -- Rainbow bracket
+  use "p00f/nvim-ts-rainbow"
+
+  -- todo highlight
+  use {"folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim"}
+
+  -- DAP
+  use "mfussenegger/nvim-dap"
+  use "theHamsta/nvim-dap-virtual-text"
+  use "rcarriga/nvim-dap-ui"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

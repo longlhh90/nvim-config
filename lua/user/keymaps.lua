@@ -25,7 +25,8 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+-- Tonggle NvimTree
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -36,6 +37,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-q>", ":bdelete<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -69,6 +71,28 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
+-- Telescope
 keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
 --keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false}))<cr>", opts)
 keymap("n", "<leader>r", "<cmd>Telescope live_grep<cr>", opts)
+
+-- DAP
+keymap("n", "<Space>t", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+keymap("n", "<Space>c", "<cmd>lua require'dap'.continue()<cr>", opts)
+keymap("n", "<Space><Space>", "<cmd>lua require'dap'.step_over()<cr>", opts)
+keymap("n", "<Space>i", "<cmd>lua require'dap'.step_into()<cr>", opts)
+keymap("n", "<Space>u", "<cmd>lua require'dap'.step_out()<cr>", opts)
+keymap("n", "<Space>s", "<cmd>lua require'dap'.continue()<cr>", opts)
+keymap("n", "<Space>q", "<cmd>lua require'dap'.close()<cr>", opts)
+keymap("n", "<Space>v", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+
+--b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
+--C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
+--d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+--g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
+--p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
+--r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+
+-- Others
+keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
+
