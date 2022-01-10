@@ -37,7 +37,8 @@ dap_client.defaults.fallback.terminal_win_cmd = "50vsplit new"
 
 dap_client.adapters.python = {
   type = 'executable';
-  command = os.getenv('HOME') .. '/projects/venvs/smartcookie-api/bin/python';
+  command = os.getenv('HOME') .. '/projects/venvs/smartcookie-api/bin/python',
+  --command = '/usr/bin/python3',
   args = { '-m', 'debugpy.adapter' };
 }
 
@@ -54,9 +55,9 @@ dap_client.adapters.python = {
 
     --program = "${workspaceFolder}/main.py"; -- This configuration will launch the current file if used.
 
---  },
+--  pythonPath= os.getenv('HOME') .. '/projects/venvs/smartcookie-api/bin/python'
+--  }
 --}
 
 -- In most of the case we should load config from vscode launch.json
 require('dap.ext.vscode').load_launchjs()
-
