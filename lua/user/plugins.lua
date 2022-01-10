@@ -47,6 +47,8 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
   use 'norcalli/nvim-colorizer.lua'
+  use "akinsho/bufferline.nvim"
+  use "moll/vim-bbye"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -85,6 +87,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+  use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Toggle Terminal
   use {"akinsho/toggleterm.nvim"}
