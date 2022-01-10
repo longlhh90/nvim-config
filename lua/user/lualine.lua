@@ -33,6 +33,16 @@ local function diff_source()
   end
 end
 
+local function env_cleanup(venv)
+  if string.find(venv, "/") then
+    local final_venv = venv
+    for w in venv:gmatch "([^/]+)" do
+      final_venv = w
+    end
+    venv = final_venv
+  end
+  return venv
+end
 
 local mode_icons = {
         c = "🅒",
@@ -58,16 +68,6 @@ local mode = {
 
       if mode_icons[vim.fn.mode()] ~= nil then
            return prefix .. " • " .. mode_icons[vim.fn.mode()] .. " "
-      -- elseif vim.fn.mode() == 'i' then
-      --     return prefix .. " - INSERT"
-      -- elseif vim.fn.mode() == 'v' then
-      --     return prefix .. " - VISUAL"
-      -- elseif vim.fn.mode() == 'R' then
-      --     return prefix .. " - REPLACE"
-      -- elseif vim.fn.mode() == 't' then
-      --     return prefix .. " - TERMINAL"
-      -- else
-      --     return prefix .. " "
       else
         return prefix .. " "
       end
@@ -80,7 +80,7 @@ local mode = {
 local branch = {
     "b:gitsigns_head",
     icon = " ",
-    color = { gui = "bold", fg = colors.red },
+    color = { gui = "bold", fg = colors.green},
     cond = hide_in_width,
   }
 
@@ -106,15 +106,15 @@ local diff = {
 
 local python_env = {
     function()
-      local utils = require "lvim.core.lualine.utils"
+      --local utils = require "lvim.core.lualine.utils"
       if vim.bo.filetype == "python" then
         local venv = os.getenv "CONDA_DEFAULT_ENV"
         if venv then
-          return string.format("  (%s)", utils.env_cleanup(venv))
+          return string.format("  (%s)", env_cleanup(venv))
         end
         venv = os.getenv "VIRTUAL_ENV"
         if venv then
-          return string.format("  (%s)", utils.env_cleanup(venv))
+          return string.format("  (%s)", env_cleanup(venv))
         end
         return ""
       end
@@ -166,14 +166,14 @@ local lsp = {
       end
 
       -- add formatter
-      local formatters = require "lvim.lsp.null-ls.formatters"
-      local supported_formatters = formatters.list_registered_providers(buf_ft)
-      vim.list_extend(buf_client_names, supported_formatters)
+      -- local formatters = require "lvim.lsp.null-ls.formatters"
+      -- local supported_formatters = formatters.list_registered_providers(buf_ft)
+      -- vim.list_extend(buf_client_names, supported_formatters)
 
       -- add linter
-      local linters = require "lvim.lsp.null-ls.linters"
-      local supported_linters = linters.list_registered_providers(buf_ft)
-      vim.list_extend(buf_client_names, supported_linters)
+      -- local linters = require "lvim.lsp.null-ls.linters"
+      -- local supported_linters = linters.list_registered_providers(buf_ft)
+      -- vim.list_extend(buf_client_names, supported_linters)
 
       return "[" .. table.concat(buf_client_names, ", ") .. "]"
     end,
@@ -228,8 +228,8 @@ lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-	  --component_separators = { left = "•", right = "•" },
-	  component_separators = { left = "", right = "" },
+	  component_separators = { left = "•", right = "•" },
+	  -- component_separators = { left = "", right = "" },
     section_separators = { left = '', right = '' },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "toggleterm" },
 		always_divide_middle = true,
@@ -249,9 +249,9 @@ sections = {
     lualine_x = {
       diagnostics,
       treesitter,
-      lsp,
     },
     lualine_y = {
+      lsp,
       filetype,
       encoding,
     },
