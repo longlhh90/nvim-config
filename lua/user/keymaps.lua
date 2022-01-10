@@ -6,9 +6,9 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap ; as leader key
-keymap("", "<;>", "<Nop>", opts)
-vim.g.mapleader = ";"
-vim.g.maplocalleader = ";"
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Modes
 --   normal_mode = "n",
@@ -37,7 +37,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<S-q>", ":bdelete<CR>", opts)
+keymap("n", "<S-q>", ":Bdelete<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -77,14 +77,14 @@ keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>r", "<cmd>Telescope live_grep<cr>", opts)
 
 -- DAP
-keymap("n", "<Space>t", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<Space>c", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<Space><Space>", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<Space>i", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<Space>u", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<Space>s", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<Space>q", "<cmd>lua require'dap'.close()<cr>", opts)
-keymap("n", "<Space>v", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+keymap("n", "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
+keymap("n", "<leader><leader>", "<cmd>lua require'dap'.step_over()<cr>", opts)
+keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
+keymap("n", "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", opts)
+keymap("n", "<leader>ds", "<cmd>lua require'dap'.continue()<cr>", opts)
+keymap("n", "<leader>dq", "<cmd>lua require'dap'.close()<cr>", opts)
+keymap("n", "<leader>dv", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 
 --b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
 --C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
@@ -94,5 +94,5 @@ keymap("n", "<Space>v", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 --r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
 
 -- Others
-keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
+keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
 
