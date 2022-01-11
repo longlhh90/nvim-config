@@ -7,6 +7,8 @@ local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
 
+local dap = require'dap'
+
 local colors = {
   bg = "#1F1F28",
   fg = "#DCD7BA",
@@ -20,6 +22,10 @@ local colors = {
   purple = "#c678dd",
   blue = "#51afef",
   red = "#C34043",
+  sakura_pink = "#D27E99",
+  wave_red = "#E46876",
+  surimi_orange = "#FFA066",
+  ronin_yellow = "#FF9E3B",
 }
 
 local function diff_source()
@@ -55,6 +61,17 @@ local mode_icons = {
 }
 --bullet = "•"
 
+local debug = {
+    function ()
+      if dap.status() ~= '' then
+        return " "
+      end
+      return ""
+    end,
+    color = {fg = colors.ronin_yellow, },
+    cond = nil,
+}
+
 local mode = {
     function()
       local prefix = ""
@@ -67,7 +84,7 @@ local mode = {
       end
 
       if mode_icons[vim.fn.mode()] ~= nil then
-           return prefix .. " • " .. mode_icons[vim.fn.mode()] .. " "
+          return prefix .. " • " .. mode_icons[vim.fn.mode()] .. " "
       else
         return prefix .. " "
       end
@@ -80,7 +97,7 @@ local mode = {
 local branch = {
     "b:gitsigns_head",
     icon = " ",
-    color = { gui = "bold", fg = colors.green},
+    color = { gui = "bold", fg = colors.wave_red},
     cond = hide_in_width,
   }
 
@@ -106,7 +123,6 @@ local diff = {
 
 local python_env = {
     function()
-      --local utils = require "lvim.core.lualine.utils"
       if vim.bo.filetype == "python" then
         local venv = os.getenv "CONDA_DEFAULT_ENV"
         if venv then
@@ -239,6 +255,7 @@ sections = {
       mode,
     },
     lualine_b = {
+      debug,
       branch,
       filename,
     },

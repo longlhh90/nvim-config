@@ -37,27 +37,36 @@ dap_client.defaults.fallback.terminal_win_cmd = "50vsplit new"
 
 dap_client.adapters.python = {
   type = 'executable';
-  command = os.getenv('HOME') .. '/projects/venvs/smartcookie-api/bin/python',
-  --command = '/usr/bin/python3',
+  command = "/usr/bin/python3";
   args = { '-m', 'debugpy.adapter' };
 }
 
 -- Custom config for python
 
---dap_client.configurations.python = {
---  {
-    -- The first three options are required by nvim-dap
---    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
---    request = 'launch';
---    name = "Launch file";
-
-    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-
-    --program = "${workspaceFolder}/main.py"; -- This configuration will launch the current file if used.
-
---  pythonPath= os.getenv('HOME') .. '/projects/venvs/smartcookie-api/bin/python'
---  }
---}
-
 -- In most of the case we should load config from vscode launch.json
 require('dap.ext.vscode').load_launchjs()
+
+-- If we cannot get the launchjs, then load the default config
+-- TODO: detect project with file to run the appropriate config for django and flask project if needed
+if dap_client.configurations.python == nil then
+  dap_client.configurations.python= {
+      {
+        type = 'python';
+        request = 'launch';
+        name = "Launch file";
+        program = "${file}";
+        pythonPath = function()
+          local venv = os.getenv "CONDA_DEFAULT_ENV"
+          if venv then
+            return venv .. "/bin/python"
+          end
+          venv = os.getenv "VIRTUAL_ENV"
+          if venv then
+            return venv .. "/bin/python"
+          end
+          return "/usr/bin/python3"
+        end;
+      },
+  }
+
+end
