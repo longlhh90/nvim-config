@@ -35,9 +35,20 @@ vim.fn.sign_define("DapStopped", conf.stopped)
 
 dap_client.defaults.fallback.terminal_win_cmd = "50vsplit new"
 
+
+----- Dap Python -----
+local python_path 
+if vim.loop.os_uname().sysname == "Darwin" then
+  python_path = "/usr/local/bin/python3"
+elseif vim.loop.os_uname().sysname == "Linux" then
+  python_path = "/usr/bin/python3"
+else
+  python_path = ""
+end
+
 dap_client.adapters.python = {
   type = 'executable';
-  command = "/usr/bin/python3";
+  command = python_path;
   args = { '-m', 'debugpy.adapter' };
 }
 
@@ -64,9 +75,37 @@ if dap_client.configurations.python == nil then
           if venv then
             return venv .. "/bin/python"
           end
-          return "/usr/bin/python3"
+          return python_path 
         end;
       },
   }
 
+end
+
+----- Dap NodeJs -----
+dap_client.adapters.node2 = {
+  type = 'executable',
+  command = 'node',
+  args = {os.getenv('HOME') .. '/vscode-node-debug2/out/src/nodeDebug.js'},
+}
+
+if dap_client.configurations.javascript == nil then
+  dap_client.configurations.javascript = {
+    {
+      name = 'Launch',
+      type = 'node2',
+      request = 'launch',
+      program = '${workspaceFolder}/server.js',
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      protocol = 'inspector',
+    },
+    {
+      -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+      name = 'Attach to process',
+      type = 'node2',
+      request = 'attach',
+      processId = require'dap.utils'.pick_process,
+    },
+}
 end
