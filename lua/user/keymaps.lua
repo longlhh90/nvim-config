@@ -85,6 +85,7 @@ keymap("n", "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", opts)
 keymap("n", "<leader>ds", "<cmd>lua require'dap'.continue()<cr>", opts)
 keymap("n", "<leader>dq", "<cmd>lua require'dap'.close()<cr>", opts)
 keymap("n", "<leader>dv", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+keymap("n", "<leader>dr", "<cmd>lua require'dap'.close() require'dap'.continue()<cr>", opts)
 
 --b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
 --C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
