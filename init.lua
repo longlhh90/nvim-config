@@ -1,18 +1,18 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.cmp"
-require "user.lsp"
-require "user.telescope"
-require "user.treesitter"
-require "user.terminal"
-require "user.lualine"
-require "user.autopairs"
-require "user.gitsigns"
-require "user.comment"
-require "user.todo-comment"
-require "user.nvim-tree"
-require "user.dap"
-require "user.colorizer"
-require                                            "user.bufferline"
+require("user.options")
+require("user.keymaps")
+require("user.plugins")
+require("user.colorscheme")
+require("user.cmp")
+require("user.lsp")
+require("user.telescope")
+require("user.treesitter")
+require("user.terminal")
+require("user.lualine")
+require("user.autopairs")
+require("user.gitsigns")
+require("user.comment")
+require("user.todo-comment")
+require("user.nvim-tree")
+require("user.dap")
+require("user.colorizer")
+require("user.bufferline")

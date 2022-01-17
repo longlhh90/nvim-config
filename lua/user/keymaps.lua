@@ -72,15 +72,14 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- ToggleTerm
-local Terminal = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({cmd = "lazygit",direction = "float", size=30, hidden = true})
+local Terminal = require("toggleterm.terminal").Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", direction = "float", size = 30, hidden = true })
 
-_toggle_lazygit = function ()
-  lazygit:toggle()
+_toggle_lazygit = function()
+	lazygit:toggle()
 end
 
 keymap("n", "<leader>tl", "<cmd>lua _toggle_lazygit()<cr>", opts)
-
 
 -- Telescope
 keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
@@ -107,4 +106,3 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.close() require'dap'.continue()
 
 -- Others
 keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
-
