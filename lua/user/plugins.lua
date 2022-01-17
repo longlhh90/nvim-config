@@ -97,7 +97,6 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
   -- Auto comment
   use "numToStr/Comment.nvim"

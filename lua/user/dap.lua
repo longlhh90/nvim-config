@@ -75,11 +75,24 @@ if dap_client.configurations.python == nil then
           if venv then
             return venv .. "/bin/python"
           end
-          return python_path 
+          return python_path
         end;
       },
   }
 
+elseif dap_client.configurations.python[1].module == 'flask' then
+  dap_client.configurations.python[1].pythonPath = function()
+    local venv = os.getenv "CONDA_DEFAULT_ENV"
+      if venv then
+        return venv .. "/bin/python"
+      end
+        venv = os.getenv "VIRTUAL_ENV"
+      if venv then
+        return venv .. "/bin/python"
+      end
+        return python_path
+      end;
+  dap_client.configurations.python[1].env.FLASK_DEBUG = "False"
 end
 
 ----- Dap NodeJs -----
