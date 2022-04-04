@@ -95,7 +95,9 @@ local mode = {
 }
 
 local branch = {
-	"b:gitsigns_head",
+	function()
+		return vim.b.gitsigns_head:sub(0,20)
+	end,
 	icon = " ",
 	color = { gui = "bold", fg = colors.wave_red },
 	cond = hide_in_width,
