@@ -98,6 +98,8 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
+  -- use("tpope/vim-fugitive")
+  use("akinsho/git-conflict.nvim")
 
 	-- Auto comment
 	use("numToStr/Comment.nvim")
@@ -121,7 +123,6 @@ return packer.startup(function(use)
 
   --
   use("tpope/vim-surround")
-  use("tpope/vim-fugitive")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
