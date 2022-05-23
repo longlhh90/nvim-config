@@ -26,7 +26,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Tonggle NvimTree
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
+-- keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -71,32 +71,22 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- ToggleTerm
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", direction = "float", size = 30, hidden = true })
-
-_toggle_lazygit = function()
-	lazygit:toggle()
-end
-
-keymap("n", "<leader>tl", "<cmd>lua _toggle_lazygit()<cr>", opts)
-
 -- Telescope
-keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
+-- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
 --keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false}))<cr>", opts)
-keymap("n", "<leader>r", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "<leader>r", "<cmd>Telescope live_grep<cr>", opts)
 
 -- DAP
-keymap("n", "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader><leader>", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>ds", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>dq", "<cmd>lua require'dap'.close()<cr>", opts)
-keymap("n", "<leader>dv", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.close() require'dap'.continue()<cr>", opts)
-
+-- keymap("n", "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+-- keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
+-- keymap("n", "<leader><leader>", "<cmd>lua require'dap'.step_over()<cr>", opts)
+-- keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
+-- keymap("n", "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", opts)
+-- keymap("n", "<leader>ds", "<cmd>lua require'dap'.continue()<cr>", opts)
+-- keymap("n", "<leader>dq", "<cmd>lua require'dap'.close()<cr>", opts)
+-- keymap("n", "<leader>dv", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+-- keymap("n", "<leader>dr", "<cmd>lua require'dap'.close() require'dap'.continue()<cr>", opts)
+--
 --b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
 --C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
 --d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
@@ -105,4 +95,4 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.close() require'dap'.continue()
 --r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
 
 -- Others
-keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
+-- keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
