@@ -49,6 +49,9 @@ return packer.startup(function(use)
 	use("norcalli/nvim-colorizer.lua")
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
+  --
+  use("tpope/vim-surround")
+  use("easymotion/vim-easymotion")
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -121,8 +124,6 @@ return packer.startup(function(use)
   -- WhichKey
   use("folke/which-key.nvim")
 
-  --
-  use("tpope/vim-surround")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
