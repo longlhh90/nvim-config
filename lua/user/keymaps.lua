@@ -94,5 +94,3 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 --p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
 --r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
 
--- Others
--- keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
