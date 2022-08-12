@@ -95,6 +95,7 @@ local mappings = {
     "Find files",
   },
   ["r"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+  ["v"] = { "<C-w>v", "Split windows vertically" },
   -- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
   p = {
