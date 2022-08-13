@@ -14,7 +14,10 @@ require("user.comment")
 require("user.todo-comment")
 require("user.nvim-tree")
 require("user.dap")
+
+--[[ highligh color in nvim ]]
 require("user.colorizer")
+
 require("user.bufferline")
 require("user.whichkey")
 require("user.git-conflict")

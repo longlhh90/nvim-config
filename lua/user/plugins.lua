@@ -9,8 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"--depth",
 		"1",
 		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
+		install_path, })
 	print("Installing packer close and reopen Neovim...")
 	vim.cmd([[packadd packer.nvim]])
 end
@@ -49,9 +48,9 @@ return packer.startup(function(use)
 	use("norcalli/nvim-colorizer.lua")
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
-  --
-  use("tpope/vim-surround")
-  use("easymotion/vim-easymotion")
+	--
+	use("tpope/vim-surround")
+	use("easymotion/vim-easymotion")
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -92,6 +91,7 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("windwp/nvim-ts-autotag")
 
 	-- Toggle Terminal
 	use({ "akinsho/toggleterm.nvim" })
@@ -101,8 +101,8 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-  -- use("tpope/vim-fugitive")
-  use("akinsho/git-conflict.nvim")
+	-- use("tpope/vim-fugitive")
+	use("akinsho/git-conflict.nvim")
 
 	-- Auto comment
 	use("numToStr/Comment.nvim")
@@ -121,9 +121,8 @@ return packer.startup(function(use)
 	use("theHamsta/nvim-dap-virtual-text")
 	use("rcarriga/nvim-dap-ui")
 
-  -- WhichKey
-  use("folke/which-key.nvim")
-
+	-- WhichKey
+	use("folke/which-key.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
