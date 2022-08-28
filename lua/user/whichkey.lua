@@ -88,7 +88,7 @@ local mappings = {
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+  ["n"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
     -- "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "<cmd>Telescope find_files<cr>",
@@ -96,6 +96,7 @@ local mappings = {
   },
   ["r"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   ["v"] = { "<C-w>v", "Split windows vertically" },
+  ["h"] = { "<C-w>s", "Split windows horizontally" },
   -- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
   p = {
