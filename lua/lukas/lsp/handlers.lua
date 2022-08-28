@@ -12,7 +12,6 @@ M.setup = function()
   for _, sign in ipairs(signs) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
-
   local config = {
     -- disable virtual text
     virtual_text = false,
@@ -62,14 +61,14 @@ end
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(
-    bufnr,
-    "n",
-    "gr",
-    "<cmd>lua vim.lsp.buf.references({includeDeclaration = false})<CR>",
-    opts
-  )
+  --[[ vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts) ]]
+  --[[ vim.api.nvim_buf_set_keymap( ]]
+  --[[   bufnr, ]]
+  --[[   "n", ]]
+  --[[   "gr", ]]
+  --[[   "<cmd>lua vim.lsp.buf.references({includeDeclaration = false})<CR>", ]]
+  --[[   opts ]]
+  --[[ ) ]]
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
 

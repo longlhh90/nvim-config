@@ -44,10 +44,10 @@ keymap("n", "gk", function()
   require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end, opts)
 keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
---[[ keymap("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", opts)  not working now ]]
+keymap("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", opts)
 keymap("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", opts)
 keymap("n", "gp", "<Cmd>Lspsaga preview_definition<CR>", opts)
-keymap("n", "gR", "<Cmd>Lspsaga rename<CR>", opts)
+keymap("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
 keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- Show line diagnostics
 keymap("v", "<leader>la", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
 
