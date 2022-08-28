@@ -14,6 +14,7 @@ vim.opt.fillchars:append({
 require("kanagawa").setup({
   globalStatus = true,
   transparent = true,
+  dimInactive = true,
 })
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
