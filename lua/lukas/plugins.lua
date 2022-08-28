@@ -44,12 +44,11 @@ return packer.startup(function(use)
   use("wbthomason/packer.nvim") -- Have packer manage itself
   use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-  use("kyazdani42/nvim-web-devicons")
+  use("kyazdani42/nvim-web-devicons") -- Display beautiful icons theme
   use("kyazdani42/nvim-tree.lua")
   use("norcalli/nvim-colorizer.lua")
   use("akinsho/bufferline.nvim")
   use("moll/vim-bbye")
-  --
   use("tpope/vim-surround")
   use("easymotion/vim-easymotion")
 
@@ -59,7 +58,7 @@ return packer.startup(function(use)
   use("rebelot/kanagawa.nvim")
   use({ "ellisonleao/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
 
-  -- cmp plugins
+  -- Completion plugins
   use("hrsh7th/nvim-cmp") -- The completion plugin
   use("hrsh7th/cmp-buffer") -- buffer completions
   use("hrsh7th/cmp-path") -- path completions
@@ -67,7 +66,6 @@ return packer.startup(function(use)
   use("saadparwaiz1/cmp_luasnip") -- snippet completions
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-nvim-lua")
-
   -- snippets
   use("L3MON4D3/LuaSnip") --snippet engine
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
@@ -81,6 +79,7 @@ return packer.startup(function(use)
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   })
+  use("glepnir/lspsaga.nvim")
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")
@@ -94,36 +93,21 @@ return packer.startup(function(use)
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use("windwp/nvim-ts-autotag")
 
-  -- Toggle Terminal
-  use({ "akinsho/toggleterm.nvim" })
-
-  -- Lualine
+  -- Misc
+  use({ "akinsho/toggleterm.nvim" }) -- Toggle Terminal
   use("nvim-lualine/lualine.nvim")
-
-  -- Git
   use("lewis6991/gitsigns.nvim")
-  -- use("tpope/vim-fugitive")
   use("akinsho/git-conflict.nvim")
-
-  -- Auto comment
-  use("numToStr/Comment.nvim")
-
-  -- Autopairs
-  use("windwp/nvim-autopairs")
-
-  -- Rainbow bracket
-  use("p00f/nvim-ts-rainbow")
-
-  -- todo highlight
-  use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
+  use("numToStr/Comment.nvim") -- Auto comment
+  use("windwp/nvim-autopairs") -- Autopairs
+  use("p00f/nvim-ts-rainbow") -- Rainbow bracket
+  use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }) -- todo highlight
+  use("folke/which-key.nvim") -- WhichKey
 
   -- DAP
   use("mfussenegger/nvim-dap")
   use("theHamsta/nvim-dap-virtual-text")
   use("rcarriga/nvim-dap-ui")
-
-  -- WhichKey
-  use("folke/which-key.nvim")
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
