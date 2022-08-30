@@ -37,19 +37,20 @@ saga.init_lsp_saga({
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-keymap("n", "gj", function()
-  require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
-end, opts)
-keymap("n", "gk", function()
-  require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
-end, opts)
-keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
-keymap("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", opts)
-keymap("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", opts)
-keymap("n", "gp", "<Cmd>Lspsaga preview_definition<CR>", opts)
+--[[ keymap("n", "gj", function() ]]
+--[[   require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR }) ]]
+--[[ end, opts) ]]
+--[[ keymap("n", "gk", function() ]]
+--[[   require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR }) ]]
+--[[ end, opts) ]]
+
+keymap("n", "gp", "<Cmd>Lspsaga lsp_finder<CR>", opts)
 keymap("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
 keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- Show line diagnostics
 keymap("v", "<leader>la", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+
+-- Hover Doc
+--[[ keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true }) ]]
 
 local action = require("lspsaga.action")
 -- scroll in hover doc or  definition preview window
