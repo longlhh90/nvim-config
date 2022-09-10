@@ -61,7 +61,7 @@ end
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
-  --[[ vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts) ]]
+  vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
   vim.keymap.set('n', 'gk', "<cmd> lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>", opts)

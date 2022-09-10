@@ -46,7 +46,7 @@ local opts = { noremap = true, silent = true }
 
 keymap("n", "gp", "<Cmd>Lspsaga lsp_finder<CR>", opts)
 keymap("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
-keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- Show line diagnostics
+--[[ keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- Show line diagnostics ]]
 keymap("v", "<leader>la", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
 
 -- Hover Doc
