@@ -98,10 +98,12 @@ return packer.startup(function(use)
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use("windwp/nvim-ts-autotag")
 
-  -- Misc
-  use({ "akinsho/toggleterm.nvim" }) -- Toggle Terminal
-  use("nvim-lualine/lualine.nvim")
+  -- Git
   use("lewis6991/gitsigns.nvim")
+
+  -- Misc
+  use({ "akinsho/toggleterm.nvim" })                                      -- Toggle Terminal
+  use("nvim-lualine/lualine.nvim")
   use("numToStr/Comment.nvim")                                            -- Auto comment
   use("windwp/nvim-autopairs")                                            -- Autopairs
   use("p00f/nvim-ts-rainbow")                                             -- Rainbow bracket
