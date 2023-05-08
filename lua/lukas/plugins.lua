@@ -41,45 +41,50 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
   -- Common plugins
-  use("wbthomason/packer.nvim") -- Have packer manage itself
-  use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-  use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+  use("wbthomason/packer.nvim")       -- Have packer manage itself
+  use("nvim-lua/popup.nvim")          -- An implementation of the Popup API from vim in Neovim
+  use("nvim-lua/plenary.nvim")        -- Useful lua functions used ny lots of plugins
   use("kyazdani42/nvim-web-devicons") -- Display beautiful icons theme
   use("kyazdani42/nvim-tree.lua")
   use("norcalli/nvim-colorizer.lua")
-  use("akinsho/bufferline.nvim")
-  use("moll/vim-bbye")
+  use { "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" }
+  use("moll/vim-bbye") -- doesn't need anymore? for Bdelete as we are using bdelete
   use("tpope/vim-surround")
-  use("easymotion/vim-easymotion")
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use("lunarvim/darkplus.nvim")
   use("rebelot/kanagawa.nvim")
   use({ "ellisonleao/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
 
   -- Completion plugins
-  use("hrsh7th/nvim-cmp") -- The completion plugin
-  use("hrsh7th/cmp-buffer") -- buffer completions
-  use("hrsh7th/cmp-path") -- path completions
-  use("hrsh7th/cmp-cmdline") -- cmdline completions
+  use("hrsh7th/nvim-cmp")         -- The completion plugin
+  use("hrsh7th/cmp-buffer")       -- buffer completions
+  use("hrsh7th/cmp-path")         -- path completions
+  use("hrsh7th/cmp-cmdline")      -- cmdline completions
   use("saadparwaiz1/cmp_luasnip") -- snippet completions
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-nvim-lua")
   -- snippets
-  use("L3MON4D3/LuaSnip") --snippet engine
+  use("L3MON4D3/LuaSnip")             --snippet engine
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
   -- LSP
-  use("neovim/nvim-lspconfig") -- enable LSP
-  use("williamboman/nvim-lsp-installer") --simple to use language server installer
+  use("neovim/nvim-lspconfig")               -- enable LSP
+  use("williamboman/nvim-lsp-installer")     --simple to use language server installer
   use("ray-x/lsp_signature.nvim")
-  use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+  use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
   use({
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   })
-  use("glepnir/lspsaga.nvim")
+  use({
+    "glepnir/lspsaga.nvim",
+    requires = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" }
+    }
+  })
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")
@@ -97,12 +102,11 @@ return packer.startup(function(use)
   use({ "akinsho/toggleterm.nvim" }) -- Toggle Terminal
   use("nvim-lualine/lualine.nvim")
   use("lewis6991/gitsigns.nvim")
-  use("akinsho/git-conflict.nvim")
-  use("numToStr/Comment.nvim") -- Auto comment
-  use("windwp/nvim-autopairs") -- Autopairs
-  use("p00f/nvim-ts-rainbow") -- Rainbow bracket
+  use("numToStr/Comment.nvim")                                            -- Auto comment
+  use("windwp/nvim-autopairs")                                            -- Autopairs
+  use("p00f/nvim-ts-rainbow")                                             -- Rainbow bracket
   use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }) -- todo highlight
-  use("folke/which-key.nvim") -- WhichKey
+  use("folke/which-key.nvim")                                             -- WhichKey
 
   -- DAP
   use("mfussenegger/nvim-dap")

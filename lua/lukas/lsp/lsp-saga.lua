@@ -3,7 +3,7 @@ if not status then
   return
 end
 
-saga.init_lsp_saga({
+saga.setup({
   -- Options with default value
   -- "single" | "double" | "rounded" | "bold" | "plus"
   border_style = "rounded",
@@ -12,52 +12,58 @@ saga.init_lsp_saga({
   -- use emoji lightbulb in default
   code_action_icon = "💡",
   -- same as nvim-lightbulb but async
-  code_action_lightbulb = {
+  lightbulb = {
     enable = false,
+    enable_in_insert = true,
+    sign = true,
+    sign_priority = 40,
+    virtual_text = true,
   },
   -- finder do lsp request timeout
   -- if your project big enough or your server very slow
   -- you may need to increase this value
-  finder_request_timeout = 5000,
-  finder_action_keys = {
-    open = "<CR>",
-    vsplit = "v",
-    split = "h",
-    tabe = "t",
-    quit = "<ESC>",
+  request_timeout = 5000,
+
+  finder = {
+    max_height = 0.5,
+    min_width = 30,
+    force_max_height = false,
+    keys = {
+      jump_to = 'p',
+      expand_or_jump = 'o',
+      vsplit = '<CR>',
+      split = 'h',
+      tabe = 't',
+      tabnew = 'r',
+      quit = { '<ESC>' },
+      close_in_preview = '<ESC>',
+    },
   },
-  code_action_keys = {
+
+  code_action = {
+    num_shortcut = true,
+    show_server_name = false,
+    extend_gitsigns = true,
+    keys = {
+      -- string | table type
+      quit = "<ESC>",
+      exec = "<CR>",
+    },
+  },
+
+  rename = {
     quit = "<ESC>",
     exec = "<CR>",
+    mark = "x",
+    confirm = "<CR>",
+    in_select = true,
   },
-  rename_action_quit = "<ESC>",
 })
 
 -- Shorten function name
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
---[[ keymap("n", "gj", function() ]]
---[[   require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR }) ]]
---[[ end, opts) ]]
---[[ keymap("n", "gk", function() ]]
---[[   require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR }) ]]
---[[ end, opts) ]]
-
 keymap("n", "gp", "<Cmd>Lspsaga lsp_finder<CR>", opts)
 keymap("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
---[[ keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- Show line diagnostics ]]
 keymap("v", "<leader>la", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
-
--- Hover Doc
---[[ keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true }) ]]
-
-local action = require("lspsaga.action")
--- scroll in hover doc or  definition preview window
-vim.keymap.set("n", "<C-f>", function()
-  action.smart_scroll_with_saga(1)
-end, { silent = true })
--- scroll in hover doc or  definition preview window
-vim.keymap.set("n", "<C-b>", function()
-  action.smart_scroll_with_saga(-1)
-end, { silent = true })

@@ -1,24 +1,24 @@
 local conf = {
-	active = false,
-	on_config_done = nil,
-	breakpoint = {
-		text = "",
-		texthl = "LspDiagnosticsSignError",
-		linehl = "",
-		numhl = "",
-	},
-	breakpoint_rejected = {
-		text = "",
-		texthl = "LspDiagnosticsSignHint",
-		linehl = "",
-		numhl = "",
-	},
-	stopped = {
-		text = "",
-		texthl = "LspDiagnosticsSignInformation",
-		linehl = "DiagnosticUnderlineInfo",
-		numhl = "LspDiagnosticsSignInformation",
-	},
+  active = false,
+  on_config_done = nil,
+  breakpoint = {
+    text = "󰃤",
+    texthl = "LspDiagnosticsSignError",
+    linehl = "",
+    numhl = "",
+  },
+  breakpoint_rejected = {
+    text = "󰃤",
+    texthl = "LspDiagnosticsSignHint",
+    linehl = "",
+    numhl = "",
+  },
+  stopped = {
+    text = "",
+    texthl = "LspDiagnosticsSignInformation",
+    linehl = "DiagnosticUnderlineInfo",
+    numhl = "LspDiagnosticsSignInformation",
+  },
 }
 
 local dap_client = require("dap")
@@ -37,17 +37,17 @@ dap_client.defaults.fallback.terminal_win_cmd = "50vsplit new"
 ----- Dap Python -----
 local python_path
 if vim.loop.os_uname().sysname == "Darwin" then
-	python_path = "/usr/local/bin/python3"
+  python_path = "/usr/local/bin/python3"
 elseif vim.loop.os_uname().sysname == "Linux" then
-	python_path = "/usr/bin/python3"
+  python_path = "/usr/bin/python3"
 else
-	python_path = ""
+  python_path = ""
 end
 
 dap_client.adapters.python = {
-	type = "executable",
-	command = python_path,
-	args = { "-m", "debugpy.adapter" },
+  type = "executable",
+  command = python_path,
+  args = { "-m", "debugpy.adapter" },
 }
 
 -- Custom config for python
@@ -58,38 +58,38 @@ require("dap.ext.vscode").load_launchjs()
 -- If we cannot get the launchjs, then load the default config
 -- TODO: detect project with file to run the appropriate config for django and flask project if needed
 if dap_client.configurations.python == nil then
-	dap_client.configurations.python = {
-		{
-			type = "python",
-			request = "launch",
-			name = "Launch file",
-			program = "${file}",
-			pythonPath = function()
-				local venv = os.getenv("CONDA_DEFAULT_ENV")
-				if venv then
-					return venv .. "/bin/python"
-				end
-				venv = os.getenv("VIRTUAL_ENV")
-				if venv then
-					return venv .. "/bin/python"
-				end
-				return python_path
-			end,
-		},
-	}
+  dap_client.configurations.python = {
+    {
+      type = "python",
+      request = "launch",
+      name = "Launch file",
+      program = "${file}",
+      pythonPath = function()
+        local venv = os.getenv("CONDA_DEFAULT_ENV")
+        if venv then
+          return venv .. "/bin/python"
+        end
+        venv = os.getenv("VIRTUAL_ENV")
+        if venv then
+          return venv .. "/bin/python"
+        end
+        return python_path
+      end,
+    },
+  }
 elseif dap_client.configurations.python[1].module == "flask" then
-	dap_client.configurations.python[1].pythonPath = function()
-		local venv = os.getenv("CONDA_DEFAULT_ENV")
-		if venv then
-			return venv .. "/bin/python"
-		end
-		venv = os.getenv("VIRTUAL_ENV")
-		if venv then
-			return venv .. "/bin/python"
-		end
-		return python_path
-	end
-	dap_client.configurations.python[1].env.FLASK_DEBUG = "False"
+  dap_client.configurations.python[1].pythonPath = function()
+    local venv = os.getenv("CONDA_DEFAULT_ENV")
+    if venv then
+      return venv .. "/bin/python"
+    end
+    venv = os.getenv("VIRTUAL_ENV")
+    if venv then
+      return venv .. "/bin/python"
+    end
+    return python_path
+  end
+  dap_client.configurations.python[1].env.FLASK_DEBUG = "False"
 end
 
 ----- Dap NodeJs -----
