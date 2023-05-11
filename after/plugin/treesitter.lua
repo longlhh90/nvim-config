@@ -4,12 +4,12 @@ if not status_ok then
 end
 
 configs.setup({
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ensure_installed = "all",                            -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false,                                -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "phpdoc", "tree-sitter-phpdoc" }, -- List of parsers to ignore installing
   highlight = {
-    enable = true, -- false will disable the whole extension
-    disable = { "" }, -- list of language that will be disabled
+    enable = true,                                     -- false will disable the whole extension
+    disable = { "" },                                  -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
   autopairs = {
@@ -20,7 +20,7 @@ configs.setup({
   },
   indent = { enable = true, disable = { "yaml" } },
   rainbow = {
-    enable = true,
+    enable = false,
     disable = { "html" }, -- list of languages you want to disable the plugin for
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     max_file_lines = nil, -- Do not enable for files with more than n lines, int

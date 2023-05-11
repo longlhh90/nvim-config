@@ -12,6 +12,13 @@ telescope.setup({
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "truncate" },
+    layout_strategy = "vertical",
+    layout_config = {
+      vertical = {
+        width = 0.95,
+        preview_height = 0.7
+      }
+    },
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,

@@ -101,6 +101,36 @@ return packer.startup(function(use)
   -- Git
   use("lewis6991/gitsigns.nvim")
   use("akinsho/git-conflict.nvim")
+  use({
+    "aaronhallaert/advanced-git-search.nvim",
+    config = function()
+      -- optional: setup telescope before loading the extension
+      require("telescope").setup {
+        -- move this to the place where you call the telescope setup function
+        extensions = {
+          advanced_git_search = {
+            -- Fugitive or diffview
+            diff_plugin = "fugitive",
+            -- Customize git in previewer
+            -- e.g. flags such as { "--no-pager" }, or { "-c", "delta.side-by-side=false" }
+            git_flags = {},
+            -- Customize git diff in previewer
+            -- e.g. flags such as { "--raw" }
+            git_diff_flags = {},
+            -- Show builtin git pickers when executing "show_custom_functions" or :AdvancedGitSearch
+            show_builtin_git_pickers = false,
+          }
+        }
+      }
+
+      require("telescope").load_extension("advanced_git_search")
+    end,
+    requires = {
+      "nvim-telescope/telescope.nvim",
+      -- to show diff splits and open commits in browser
+      "tpope/vim-fugitive",
+    }
+  })
 
   -- Misc
   use({ "akinsho/toggleterm.nvim" })                                      -- Toggle Terminal
