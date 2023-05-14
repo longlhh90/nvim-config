@@ -50,19 +50,6 @@ local function env_cleanup(venv)
   return venv
 end
 
---[[ local mode_icons = { ]]
---[[   c = "🅒 ", ]]
---[[   i = "🅘 ", ]]
---[[   n = "🅝 ", ]]
---[[   r = "🅡 ", ]]
---[[   R = "🅡 ", ]]
---[[   s = "🅢 ", ]]
---[[   t = "🅣 ", ]]
---[[   v = "🅥 ", ]]
---[[   vs = "🅥 ", ]]
---[[   V = "🅥 ", ]]
---[[   Vs = "🅥 ", ]]
---[[ } ]]
 local mode_icons = {
   ["n"] = { "NORMAL", "St_NormalMode" },
   ["no"] = { "NORMAL (no)", "St_NormalMode" },
@@ -123,6 +110,10 @@ local debug = {
 local mode = {
   function()
     local prefix = " 🍁 "
+
+    if vim.loop.os_uname().sysname == "Linux" then
+      prefix = "🍁🍁🍁 "
+    end
 
     if mode_icons[vim.fn.mode()] ~= nil then
       return prefix .. mode_icons[vim.fn.mode()][1] .. " "
